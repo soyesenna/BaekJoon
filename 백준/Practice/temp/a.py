@@ -1,8 +1,13 @@
-result = 0
-i = 1
-while i <= 1000:
-    if i % 3 == 0:
-        result = result + i
-    i += 1
+def f(x, y, z):
+    if (x > y):
+        if (x > z):
+            return x
+        else:
+            return z
+    else:
+        if (y > z):
+            return y
+        else:
+            return z
 
-print(result)
+print(f(2, 3, 4), f(4, 3, 2), f(3, 2, 4))
