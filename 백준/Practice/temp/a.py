@@ -1,3 +1,4 @@
-a = [[1,2],[3,4]]
+s = 'abc'
 
-print(a.index(1))
+a = set(s)
+print(len(a))
