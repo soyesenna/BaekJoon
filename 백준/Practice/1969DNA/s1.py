@@ -25,10 +25,10 @@ result = ''
 for i in range(m):
     counter = collections.Counter(count[i])#.most_common()
     if len(collections.Counter(list(counter.values())).values()) == 1:
-        counter = sorted(counter.most_common(), key=lambda x: x[0])
+        counter = sorted(counter.items(), key=lambda x: (-x[1], x[0]))
     else:
         counter = counter.most_common()
-    print(counter)
+    #print(counter)
     result += counter[0][0]
 
 result_len = 0
