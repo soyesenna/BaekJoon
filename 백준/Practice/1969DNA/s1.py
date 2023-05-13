@@ -28,6 +28,7 @@ for i in range(m):
         counter = sorted(counter.items(), key=lambda x: (-x[1], x[0]))
     else:
         counter = counter.most_common()
+        #("A", 4), ("B", 3)
     #print(counter)
     result += counter[0][0]
 

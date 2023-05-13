@@ -3,7 +3,7 @@ import sys
 
 def go(li, c, r):
     li[c][r] = True
-    return li
+    return li 
 
 
 r, c = map(int, sys.stdin.readline().split())
@@ -13,7 +13,7 @@ if k > r * c:
     sys.exit()
 
 li = [[False for _ in range(r)] for _ in range(c)]
-
+ 
 now_c = 0
 now_r = 0
 flag = 'down'
