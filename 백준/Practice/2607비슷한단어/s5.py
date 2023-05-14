@@ -1,10 +1,12 @@
-from re import I
+
 import sys
 import collections
 
 def is_same(s, target):
     counter_s = collections.Counter(s)
     counter_t = collections.Counter(target)
+    if counter_s.keys() != counter_t.keys():
+        return False
     for key in list(counter_s.keys()):
         if counter_s[key] != counter_t[key]:
             return False
@@ -60,10 +62,10 @@ result = 0
 for target in targets:
     if len(pre_s) == len(target):
         if change(pre_s, target) or plus_minus(pre_s, target):
-            print(target)
+            #print(target)
             result += 1
     else:
         if plus_minus(pre_s, target):
-            print(target)
+            #print(target)
             result += 1
 print(result)
