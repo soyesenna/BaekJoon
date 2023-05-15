@@ -1,7 +1,7 @@
 import sys
-import itertools
 import psutil
 import os
+from memory_profiler import profile
 
 def before_memory():
     # BEFORE code
@@ -27,19 +27,23 @@ def after_memory():
     print(f"AFTER  CODE: Current memory KB   : {current_process_memory_usage_as_KB: 9.3f} KB")
     print("--"*30)
 
+sys.setrecursionlimit(5000000)
+
+@profile
+def factorial(n, k, cnt):
+    if cnt == k:
+        return 1
+    return n * factorial(n - 1, k, cnt + 1)
+
 before_memory()
-n = int(sys.stdin.readline())
-li = tuple(map(int, sys.stdin.readline().split()))
-if li[0] == 1:
-    nums = [i for i in range(li[0] * len(li), n + 1)]
-print(nums)
-permutation = list(itertools.permutations(nums, n))
-print(permutation)
-idx = permutation.index(li)
+n, k = map(int, sys.stdin.readline().split())
+if k == 0:
+    print(1)
+    sys.exit()
+
+k = min(k, n - k)
+
+c = factorial(n, k, 0) / k
 
 after_memory()
-if idx == 0:
-    print(-1)
-else:
-    for num in permutation[idx - 1]:
-        print(num, end=' ')
+print(int(c % 1000000007))
