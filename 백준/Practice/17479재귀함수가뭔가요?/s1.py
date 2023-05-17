@@ -1,8 +1,8 @@
 import sys
 
-a = []
 def recursion(n, i=0):
     if n == 0:
+        print("____" * i + "\"재귀함수가 뭔가요?\"")
         print("____" * i +"\"재귀함수는 자기 자신을 호출하는 함수라네\"")
         print("____" * i + "라고 답변하였지.")
         return
