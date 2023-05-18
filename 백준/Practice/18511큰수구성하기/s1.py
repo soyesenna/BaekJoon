@@ -1,5 +1,8 @@
 import sys
 import itertools
+from cProfile import Profile
+
+profile = Profile()
 
 def recursion(n, li, idx, now_length=0):
     if idx == now_length:
@@ -18,8 +21,10 @@ def recursion(n, li, idx, now_length=0):
 
     
 
+
 n, k = sys.stdin.readline().split()
 li = sorted(list(sys.stdin.readline().split()), reverse=True)
+
 
 for coms in list(itertools.combinations_with_replacement(li, len(n))):
     for i in range(len(n), 0, -1):
