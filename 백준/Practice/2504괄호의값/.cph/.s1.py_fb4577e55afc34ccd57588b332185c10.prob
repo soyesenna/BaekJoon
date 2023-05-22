@@ -1,0 +1,1 @@
+{"name":"Local: s1","url":"/Users/soyesenna/Desktop/BeakJoon/백준/Practice/2504괄호의값/s1.py","tests":[{"id":1684737688739,"input":"(()[[]])([])","output":"28"},{"id":1684737695001,"input":"[][]((])","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soyesenna/Desktop/BeakJoon/백준/Practice/2504괄호의값/s1.py","group":"local","local":true}
