@@ -21,8 +21,6 @@ sick_cheese = set()
 for i in range(len(sick_eat)-1):
     sick_cheese = sick_eat[i] & sick_eat[i+1]
 
-for cheese in list(sick_cheese):
-    for i in range(d):
-        if eat_chart[i][1] == cheese:
+
 
 

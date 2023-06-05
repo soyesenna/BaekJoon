@@ -14,7 +14,7 @@ cnt = 0
 for i in range(n):
     now_price = 0
     present[i][0] //= 2
-    tmp = sorted(present, key=lambda x:sum(x))
+    tmp = sorted(present, key=lambda x: sum(x))
     for j in range(n):
         now_price += sum(tmp[j])
         if now_price > b:
