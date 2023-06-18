@@ -6,14 +6,14 @@ n, k = map(int, input().split())
 
 li = list(map(int, input().split()))
 
-for i in range(max(li), 0, -1):
-    jump = 0
-    for elem in li:
-        if elem > i:
-            jump += 1
-        else:
-            jump = 0
-        if jump > k - 1:
-            print(i + 1)
-            sys.exit()
-print(max(li))
+idx = 0
+result = [li[0]]
+while idx < n - 1:
+    tmp = li[idx + 1: idx + 1 + k]
+    for i in range(len(tmp) - 1, -1, -1):
+        if tmp[i] == min(tmp):
+            idx += i + 1
+            break
+    result.append(li[idx])
+
+print(max(result))
