@@ -17,3 +17,4 @@ day_result = day_result[:-1]
 for res in days:
     if res[0] == day_result:
         print(res[0], res[1], res[2])
+
