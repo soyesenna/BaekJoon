@@ -1,20 +1,19 @@
 import sys
 
-input = sys.stdin.readline
+L1,L2=[],[]
+N=int(sys.stdin.readline())
 
-n = int(input())
+for i in range(N):
+    L1.append(sys.stdin.readline())
+for i in range(N):
+    L2.append(sys.stdin.readline())
 
-in_trucks = [input().rstrip() for _ in range(n)]
-out_trucks = [input().rstrip() for _ in range(n)]
+ans=0
 
-result = 0
+for l in L2:
+    if L1.index(l) != 0:
+        ans+=1
+        L1.remove(l)
+    else: L1.remove(l)        
 
-for i in range(1, n):
-    left_in = in_trucks[:i]
-    right_out = out_trucks[out_trucks.index(in_trucks[i]) + 1:]
-    for j in range(len(left_in)):
-        if left_in[j] in right_out:
-            result += 1
-            break
-print(result)
-
+print(ans)
