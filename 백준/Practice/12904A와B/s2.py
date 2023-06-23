@@ -16,3 +16,4 @@ if origin == target:
     print(1)
 else:
     print(0)
+

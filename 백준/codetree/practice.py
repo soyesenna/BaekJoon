@@ -1,27 +1,19 @@
-import sys
-input = sys.stdin.readline
-S = input()
-T = input()
-ptr = -1
-S = S[:-1]
-T = T[:-1]
-while (len(S) < len(T)):
-    if T[-1] == 'A':
-        if ptr > 0:
-            T = T[1 :]
-        else:
-            T = T[: -1]
-    elif T[-1] == 'B':
-        if ptr > 0:
-            T = T[1 :]
-        else:
-            T = T[: -1]
-        ptr *= -1
-        print("hi")
-    print(T, ptr)
-if ptr > 0:
-    T = "".join(reversed(T))
-if S == T:
-    print(1)
-else:
-    print(0)
+
+
+n,m=map(int,input().split())
+a=list(map(int,input().split()))
+
+
+def tgh(a,m):
+    sum=0
+
+    c = [tuple(map(int, input().split())) for _ in range(m)]
+
+    for i in range(len(c)):
+        a1,a2=c[i][0],c[i][1]
+        for j in range(a1-1,a2) :
+            sum+=a[j]
+            print(sum)
+            sum=0
+
+tgh(a,m)
