@@ -1,20 +1,12 @@
-import sys
-
-input = sys.stdin.readline
-
-n = int(input())
-
-in_trucks = [input().rstrip() for _ in range(n)]
-out_trucks = [input().rstrip() for _ in range(n)]
-
-result = 0
-
-for i in range(1, n):
-    left_in = in_trucks[:i]
-    right_out = out_trucks[out_trucks.index(in_trucks[i]) + 1:]
-    for j in range(len(left_in)):
-        if left_in[j] in right_out:
-            result += 1
-            break
-print(result)
-
+n=int(input())
+arr1=[input() for _ in range(n)] 
+arr2=[input() for _ in range(n)]
+cnt=0
+for i in range(len(arr1)):
+    a=False
+    for j in range(0,i):
+        if arr2.index(arr1[j])>arr2.index(arr1[i]):
+            a=True
+    if a:
+        cnt+=1
+print(cnt)
