@@ -1,0 +1,1 @@
+{"name":"Local: s6","url":"/Users/soyesenna/Desktop/BeakJoon/백준/Practice/2607비슷한단어_fail/s6.py","tests":[{"id":1683985332123,"input":"4\nDOG\nGOD\nGOOD\nDOLL","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soyesenna/Desktop/BeakJoon/백준/Practice/2607비슷한단어_fail/s6.py","group":"local","local":true}
