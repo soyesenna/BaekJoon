@@ -1,1 +1,0 @@
-{"name":"Local: s1","url":"/Users/soyesenna/Desktop/BeakJoon/백준/Practice/1969DNA/s1.py","tests":[{"id":1683887798712,"input":"5 8\nTATGATAC\nTAAGCTAC\nAAAGATCC\nTGAGATAC\nTAAGATGT","output":"TAAGATAC\n7"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soyesenna/Desktop/BeakJoon/백준/Practice/1969DNA/s1.py","group":"local","local":true}
