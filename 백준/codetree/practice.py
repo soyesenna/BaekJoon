@@ -1,31 +1,40 @@
+def ver_carry(a, b, c):
+    # 각 자리끼리 더해서 10이넘는게있으면 False
+    arr = [a, b, c]
+    narr = [[], [], [], [], []]
+    maxn = 0
+    for elem in arr:
+        narr[0].append(elem % 10)
+        elem = elem // 10
+        narr[1].append(elem % 10)
+        elem = elem // 10
+        narr[2].append(elem % 10)
+        elem = elem // 10
+        narr[3].append(elem % 10)
+        elem = elem // 10
+        narr[4].append(elem % 10)
+
+    for elem in narr:
+        maxn = max(maxn, sum(elem))
+
+    if maxn >= 10:
+        return False
+    else:
+        return True
 
 
-n,m,d,s=map(int,input().split())
-eat = [list(map(int, input().split())) for _ in range(d)]
-apa = [list(map(int, input().split())) for _ in range(s)]
-apchm=[]
-cnt=1
+def ver_max(arr):
+    maxn = -1
+    for i in range(len(arr)):
+        for j in range(i + 1,  len(arr)):
+            for k in range(j + 1, len(arr)):
+                a, b, c = arr[i], arr[j], arr[k]
+                if ver_carry(a, b, c):
+                    maxn = max(maxn, a + b + c)
+    return maxn
 
 
-for i in range(len(apa)):
-    apch = tuple(map(lambda x: x[1], filter(lambda x: x[0] == apa[i][0] and apa[i][1] > x[2], eat)))
-    apchm.append(apch)
-
-japch = []
-if len(apchm) == 1:
-    for i in range(len(apchm[0])):
-        japch.append(apchm[0][i])
-else:
-    for i in range(len(apchm[0])):
-        for j in range(1,len(apchm)):
-            if not apchm[0][i] in apchm[j]:
-                break
-            japch.append(apchm[0][i])
-
-cnt = set()
-for real_sick in japch:
-    for i in range(d):
-        if eat[i][1]==real_sick:
-            cnt.add(eat[i][0])
-
-print(len(cnt))
+n = int(input())
+arr = [int(input()) for _ in range(n)]
+# print(arr)
+print(ver_max(arr))
