@@ -1,48 +1,38 @@
-import sys
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
 
-r, c = map(int, sys.stdin.readline().split())
+def count_sea(x, y, grid):
+    count = 0
+    for i in range(4):
+        nx, ny = x + dx[i], y + dy[i]
+        if nx < 0 or nx >= len(grid) or ny < 0 or ny >= len(grid[0]) or grid[nx][ny] == '.':
+            count += 1
+    return count
 
-def check_island(map_, index: list):
-    global r, c
-    direction = [[1,0], [-1,0], [0,1], [0,-1]]
+def solve(grid):
+    new_grid = [['.' for _ in range(len(grid[0]))] for _ in range(len(grid))]
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] == 'X':
+                if count_sea(i, j, grid) >= 3:
+                    new_grid[i][j] = '.'
+                else:
+                    new_grid[i][j] = 'X'
+    return new_grid
 
-    cnt = 0
-    for dir in direction:
-        now = [index[0] + dir[0], index[1] + dir[1]]
-        if 0 <= now[0] < r and 0 <= now[1] < c:
-            if map_[now[0]][now[1]] == '.':
-                cnt += 1
-        else:
-            cnt += 1
-    
-    return cnt >= 3
+R, C = map(int, input().split())
+grid = [list(input().strip()) for _ in range(R)]
 
+grid = solve(grid)
 
+min_x, max_x, min_y, max_y = float('inf'), -float('inf'), float('inf'), -float('inf')
+for i in range(R):
+    for j in range(C):
+        if grid[i][j] == 'X':
+            min_x = min(min_x, i)
+            max_x = max(max_x, i)
+            min_y = min(min_y, j)
+            max_y = max(max_y, j)
 
-map_ = []
-for _ in range(r):
-    map_.append(list(sys.stdin.readline().rstrip()))
-
-for i in range(r):
-    for j in range(c):
-        if map_[i][j] == 'X':
-            if check_island(map_, [i, j]):
-                map_[i][j] = 'O'
-
-after_map_index = []
-for i in range(r):
-    for j in range(c):
-        if map_[i][j] == 'X':
-            after_map_index.append([i,j])
-        elif map_[i][j] == 'O':
-            map_[i][j] = '.'
-
-max_r = max(after_map_index, key=lambda x: (x[0]))[0]
-min_r = min(after_map_index, key=lambda x: (x[0]))[0]
-max_c = max(after_map_index, key=lambda x: (x[1]))[1]
-min_c = min(after_map_index, key=lambda x: (x[1]))[1]
-
-for i in range(min_r, max_r + 1):
-    for j in range(min_c, max_c + 1):
-        print(map_[i][j], end='')
-    print()
+for i in range(min_x, max_x + 1):
+    print(''.join(grid[i][min_y:max_y + 1]))
