@@ -1,70 +1,91 @@
-import java.io.*;
+
 import java.util.*;
+import java.io.*;
 
 public class Main {
-    static int[] dx = {-1, 1, 0, 0};
-    static int[] dy = {0, 0, -1, 1};
+	
+	public static List<List<Integer>> direction = 
+			List.of(List.of(-1, 0), List.of(0, 1), List.of(1, 0), List.of(0, -1));
+	
+	public static List<String> oldMap = new ArrayList<>();
+	
+	public static List<StringBuffer> newMap = new ArrayList<>();
+	
+	public static int R;
+	public static int C;
 
-    public static int countSea(int x, int y, char[][] grid) {
-        int count = 0;
-        for (int i = 0; i < 4; i++) {
-            int nx = x + dx[i];
-            int ny = y + dy[i];
-            if (nx < 0 || nx >= grid.length || ny < 0 || ny >= grid[0].length || grid[nx][ny] == '.') {
-                count++;
-            }
-        }
-        return count;
-    }
+	public static void main(String[] args) throws Exception{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		R = Integer.parseInt(st.nextToken());
+		C = Integer.parseInt(st.nextToken());
+		
+		
+		for (int i = 0; i < R; i++) oldMap.add(br.readLine());
+		
+		
+		for (int i = 0; i < R; i++) {
+			StringBuffer tmp = new StringBuffer();
+			for (int j = 0; j < C; j++) {
+				if (oldMap.get(i).charAt(j) == '.') tmp.append('.');
+				else tmp.append(checkIsland(i, j));
+			}
+			newMap.add(tmp);
+		}
+		
+		for (int i = minRowIndex(); i <= maxRowIndex(); i++) {
+			for (int j = minColIndex(); j <= maxColIndex(); j++) {
+				System.out.print(newMap.get(i).charAt(j));
+			}
+			System.out.println();
+		}
+	}
+	
+	public static char checkIsland(int r, int c) {
+		int count = 0;
+		for (List<Integer> dir : direction) {
+			if ((r + dir.get(0) >= 0 && r + dir.get(0) < R && c + dir.get(1) >= 0 && c + dir.get(1) < C) ) {
+				if (oldMap.get(r + dir.get(0)).charAt(c + dir.get(1)) == '.') count++;
+			}else count++;
+		}
+		
+		if (count >= 3) return '.';
+		else return 'X';
+	}
+	
+	public static int minRowIndex(){
+		for (int i = 0; i < R; i++) {
+			int index = newMap.get(i).indexOf("X");
+			if (index != -1) return i;
+		}
+		return -1;
+	}
+	
+	public static int maxRowIndex() {
+		for(int i = R - 1; i >= 0; i--) {
+			int index = newMap.get(i).indexOf("X");
+			if (index != -1) return i;
+		}
+		return -1;
+	}
+	
+	public static int minColIndex() {
+		for(int i = 0; i < C; i++) {
+			for (int j = 0; j < R; j++) {
+				if (newMap.get(j).charAt(i) == 'X') return i;
+			}
+		}
+		return -1;
+	}
+	
+	public static int maxColIndex() {
+		for(int i = C - 1; i >= 0; i--) {
+			for (int j = 0; j < R; j++) {
+				if (newMap.get(j).charAt(i) == 'X') return i;
+			}
+		}
+		return -1;
+	}
 
-    public static char[][] solve(char[][] grid) {
-        char[][] newGrid = new char[grid.length][grid[0].length];
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] == 'X') {
-                    if (countSea(i, j, grid) >= 3) {
-                        newGrid[i][j] = '.';
-                    } else {
-                        newGrid[i][j] = 'X';
-                    }
-                } else {
-                    newGrid[i][j] = '.';
-                }
-            }
-        }
-        return newGrid;
-    }
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int R = Integer.parseInt(st.nextToken());
-        int C = Integer.parseInt(st.nextToken());
-
-        char[][] grid = new char[R][C];
-        for (int i = 0; i < R; i++) {
-            grid[i] = br.readLine().toCharArray();
-        }
-
-        grid = solve(grid);
-
-        int min_x = Integer.MAX_VALUE, max_x = Integer.MIN_VALUE, min_y = Integer.MAX_VALUE, max_y = Integer.MIN_VALUE;
-        for (int i = 0; i < R; i++) {
-            for (int j = 0; j < C; j++) {
-                if (grid[i][j] == 'X') {
-                    min_x = Math.min(min_x, i);
-                    max_x = Math.max(max_x, i);
-                    min_y = Math.min(min_y, j);
-                    max_y = Math.max(max_y, j);
-                }
-            }
-        }
-
-        for (int i = min_x; i <= max_x; i++) {
-            for (int j = min_y; j <= max_y; j++) {
-                System.out.print(grid[i][j]);
-            }
-            System.out.println();
-        }
-    }
 }
