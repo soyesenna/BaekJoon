@@ -20,6 +20,11 @@ public class Main {
 		String[] inputTarget = br.readLine().split(" ");
 		for (String s: inputTarget) target.add(Integer.parseInt(s));
 		
+		if (check()) {
+			System.out.println(1);
+			System.exit(0);
+		}
+		
 		while(bubbleSort());
 		
 		if (result) System.out.println(1);
