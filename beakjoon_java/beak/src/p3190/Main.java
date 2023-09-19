@@ -55,9 +55,9 @@ public class Main {
 		nowC += direction.get(nowHead).get(1);
 		if (check()) {
 			snake.add(List.of(nowR, nowC));
-			if (!apples.contains(List.of(nowR, nowC))) {
+			if (!apples.contains(List.of(nowR + 1, nowC + 1))) {
 				snake.pollFirst();
-			}else apples.remove(List.of(nowR, nowC));
+			}else apples.remove(List.of(nowR + 1, nowC + 1));
 		}else return false;
 		int ifRotate = rotateTime.indexOf(nowTime);
 		if (ifRotate != -1) {
