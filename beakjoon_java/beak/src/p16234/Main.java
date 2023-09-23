@@ -25,15 +25,10 @@ public class Main {
 		N = Integer.parseInt(st.nextToken());
 		L = Integer.parseInt(st.nextToken());
 		R = Integer.parseInt(st.nextToken());
-		
-		for (int i = 0; i < N; i++) {
-			String[] tmp = br.readLine().split(" ");
-			List<Integer> tmpList = new ArrayList<>();
-			for (String s : tmp) tmpList.add(Integer.parseInt(s));
-			map.add(tmpList);
-		}
-		
-		List<List<List<Integer>>> union = bfs();
+
+        //p16236.Main.input(br, N, map);
+
+        List<List<List<Integer>>> union = bfs();
 		while (!union.isEmpty()) {
 			result++;
 			move(union);

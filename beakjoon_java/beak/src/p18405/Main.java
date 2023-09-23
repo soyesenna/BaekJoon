@@ -25,15 +25,9 @@ public class Main {
 		
 		N = Integer.parseInt(st.nextToken());
 		K = Integer.parseInt(st.nextToken());
-		
-		for (int i = 0; i < N; i++) {
-			String[] tmp = br.readLine().split(" ");
-			List<Integer> tmpList = new ArrayList<>();
-			for (String s : tmp) tmpList.add(Integer.parseInt(s));
-			plask.add(tmpList);
-		}
-		
-		StringTokenizer st1 = new StringTokenizer(br.readLine());
+
+
+        StringTokenizer st1 = new StringTokenizer(br.readLine());
 		S = Integer.parseInt(st1.nextToken());
 		x = Integer.parseInt(st1.nextToken());
 		y = Integer.parseInt(st1.nextToken());

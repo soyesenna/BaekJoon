@@ -85,15 +85,9 @@ public class Main {
 		
 		//0 : up, 1 : right, 2 : down, 3 : left 
 		d = Integer.parseInt(st1.nextToken());
-		
-		for (int i = 0; i < N; i++) {
-			String[] tmp = br.readLine().split(" ");
-			List<Integer> tmpList = new ArrayList<>();
-			for (String s: tmp) tmpList.add(Integer.parseInt(s));
-			room.add(tmpList);
-		}
-		
-		
-	}
+
+
+
+    }
 
 }

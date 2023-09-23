@@ -24,15 +24,9 @@ public class Main {
 		
 		R = Integer.parseInt(st.nextToken());
 		C = Integer.parseInt(st.nextToken());
-		
-		for (int i = 0; i < R; i++) {
-			String[] tmp = br.readLine().split(" ");
-			List<Integer> tmpList = new ArrayList<>();
-			for (String s : tmp) tmpList.add(Integer.parseInt(s));
-			cheese.add(tmpList);
-		}
-		
-		findAir();
+
+
+        findAir();
 		while (meltCheese()) {
 			time++;
 			findAir();

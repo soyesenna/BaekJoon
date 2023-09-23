@@ -21,15 +21,10 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
-		
-		for (int i = 0; i < N; i++) {
-			String[] tmp = br.readLine().split(" ");
-			List<Integer> tmpList = new ArrayList<>();
-			for (String s : tmp) tmpList.add(Integer.parseInt(s));
-			map.add(tmpList);
-		}
-		
-		int ice = iceCnt();
+
+        //p16236.Main.input(br, N, map);
+
+        int ice = iceCnt();
 		
 		while (ice < 2) {
 			year++;
