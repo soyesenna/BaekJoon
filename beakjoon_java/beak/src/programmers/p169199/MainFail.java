@@ -5,9 +5,10 @@ public class MainFail {
 
 
     public static void main(String[] args) throws Exception {
-        SolutionFail s = new SolutionFail();
-        String[] board = {"...D..R", ".D.G...", "....D.D", "D....D.", "..D...."};
-        System.out.println(s.solution(board));
+        List<Character> a = new ArrayList<>();
+        a.add('a');
+        a.add('b');
+        System.out.println(a.toString());
     }
 }
 
