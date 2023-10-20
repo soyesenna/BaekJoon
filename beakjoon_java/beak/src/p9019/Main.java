@@ -94,19 +94,78 @@ public class Main {
                 return now.sb;
             }
 
-            for (Function<Integer, List<Object>> o : order) {
-                List<Object> nowResult = o.apply(now.num);
-                if (!visit[(int)nowResult.get(0)]) {
-                    Node next = new Node((int)nowResult.get(0));
-                    next.sb.append(now.sb);
-                    next.sb.append(nowResult.get(1));
-                    queue.add(next);
-                    visit[next.num] = true;
-                }
+            int res = orderD(now.num);
+            if (!visit[res]){
+                Node next = new Node(res);
+                next.sb.append(now.sb);
+                next.sb.append('D');
+                queue.add(next);
+                visit[next.num] = true;
             }
+
+            res = orderS(now.num);
+            if (!visit[res]){
+                Node next = new Node(res);
+                next.sb.append(now.sb);
+                next.sb.append('S');
+                queue.add(next);
+                visit[next.num] = true;
+            }
+
+            res = orderL(now.num);
+            if (!visit[res]){
+                Node next = new Node(res);
+                next.sb.append(now.sb);
+                next.sb.append('L');
+                queue.add(next);
+                visit[next.num] = true;
+            }
+
+            res = orderR(now.num);
+            if (!visit[res]){
+                Node next = new Node(res);
+                next.sb.append(now.sb);
+                next.sb.append('R');
+                queue.add(next);
+                visit[next.num] = true;
+            }
+
+
         }
 
         return null;
+    }
+
+    public static int orderD(int n) {
+        return (n * 2) % 10000;
+    }
+
+    public static int orderS(int n) {
+        return (n - 1) < 0 ? 9999 : n - 1;
+    }
+
+    public static int orderL(int num) {
+        StringBuilder sb = new StringBuilder(Integer.toString(num, 10));
+        int len = sb.length();
+        for (int i = 0; i < 4 - len; i++) {
+            sb.insert(0, 0);
+        }
+        char c = sb.charAt(0);
+        sb.deleteCharAt(0);
+        sb.append(c);
+        return Integer.parseInt(sb.toString());
+    }
+
+    public static int orderR(int num) {
+        StringBuilder sb = new StringBuilder(Integer.toString(num, 10));
+        int len = sb.length();
+        for (int i = 0; i < 4 - len; i++) {
+            sb.insert(0, 0);
+        }
+        char c = sb.charAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
+        sb.insert(0, c);
+        return Integer.parseInt(sb.toString());
     }
 }
 
