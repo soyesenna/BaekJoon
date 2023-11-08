@@ -13,9 +13,7 @@ public class Main {
         M = Integer.parseInt(st.nextToken());
 
         arr = new int[N + 1];
-
-        for (int i = 0; i <= N; i++) arr[i] = i;
-
+        init();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
@@ -36,6 +34,10 @@ public class Main {
 
         bw.close();
         br.close();
+    }
+    
+    public static void init() {
+        for (int i = 0; i <= N; i++) arr[i] = i;
     }
 
     public static void union(int n1, int n2) {
